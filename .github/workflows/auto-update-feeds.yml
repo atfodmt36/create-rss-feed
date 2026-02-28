@@ -1,0 +1,179 @@
+name: Auto Update RSS Feeds
+
+on:
+  schedule:
+    # JST 08:00 / 12:00 / 16:00 = UTC 23:00 / 03:00 / 07:00
+    - cron: "0 23,3,7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-update-feeds
+  cancel-in-progress: false
+
+jobs:
+  update-feeds:
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Generate feeds
+        run: node dist/cli/update-feeds.js
+
+      - name: Prepare gh-pages worktree
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf .gh-pages
+
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null 2>&1; then
+            git fetch origin gh-pages
+            git worktree add --force .gh-pages origin/gh-pages
+          else
+            git fetch origin "$DEFAULT_BRANCH"
+            git worktree add --force -b gh-pages .gh-pages "origin/$DEFAULT_BRANCH"
+          fi
+
+      - name: Sync generated feeds to gh-pages
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          node - <<'NODE'
+          const fs = require("node:fs/promises");
+          const path = require("node:path");
+
+          const root = process.cwd();
+          const generatedDir = path.join(root, ".generated-feeds");
+          const ghDir = path.join(root, ".gh-pages");
+          const generatedMetaPath = path.join(generatedDir, "managed-feeds.json");
+          const ghMetaPath = path.join(ghDir, "managed-feeds.json");
+
+          async function readJson(filePath) {
+            return JSON.parse(await fs.readFile(filePath, "utf8"));
+          }
+
+          async function readJsonSafe(filePath, fallback) {
+            try {
+              return await readJson(filePath);
+            } catch {
+              return fallback;
+            }
+          }
+
+          async function ensureDir(filePath) {
+            await fs.mkdir(filePath, { recursive: true });
+          }
+
+          async function copyGeneratedFile(relativePath) {
+            const srcPath = path.join(generatedDir, ...relativePath.split("/"));
+            const destPath = path.join(ghDir, ...relativePath.split("/"));
+            await ensureDir(path.dirname(destPath));
+            await fs.copyFile(srcPath, destPath);
+          }
+
+          async function removeManagedFile(relativePath) {
+            const targetPath = path.join(ghDir, ...relativePath.split("/"));
+            await fs.rm(targetPath, { force: true });
+          }
+
+          async function pruneEmptyDirectories(directoryPath) {
+            let entries;
+            try {
+              entries = await fs.readdir(directoryPath, { withFileTypes: true });
+            } catch {
+              return;
+            }
+
+            for (const entry of entries) {
+              if (entry.isDirectory()) {
+                await pruneEmptyDirectories(path.join(directoryPath, entry.name));
+              }
+            }
+
+            entries = await fs.readdir(directoryPath, { withFileTypes: true });
+            if (entries.length === 0) {
+              await fs.rmdir(directoryPath).catch(() => {});
+            }
+          }
+
+          async function main() {
+            const generatedMeta = await readJson(generatedMetaPath);
+            const previousMeta = await readJsonSafe(ghMetaPath, { desiredPaths: [] });
+
+            const desiredPaths = Array.isArray(generatedMeta.desiredPaths)
+              ? generatedMeta.desiredPaths
+              : [];
+            const successfulPaths = Array.isArray(generatedMeta.successfulPaths)
+              ? generatedMeta.successfulPaths
+              : [];
+            const previousDesiredPaths = Array.isArray(previousMeta.desiredPaths)
+              ? previousMeta.desiredPaths
+              : [];
+
+            for (const relativePath of successfulPaths) {
+              await copyGeneratedFile(relativePath);
+            }
+
+            const desiredPathSet = new Set(desiredPaths);
+            for (const relativePath of previousDesiredPaths) {
+              if (!desiredPathSet.has(relativePath)) {
+                await removeManagedFile(relativePath);
+              }
+            }
+
+            await fs.writeFile(ghMetaPath, JSON.stringify(generatedMeta, null, 2), "utf8");
+            await pruneEmptyDirectories(path.join(ghDir, "feeds"));
+          }
+
+          main().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
+
+      - name: Commit and push if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cd .gh-pages
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore(feed): auto update feeds (JST schedule)"
+          git push origin gh-pages
+
+      - name: Cleanup worktree
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree remove .gh-pages --force || true

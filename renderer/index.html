@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RSSフィード作成ツール</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>RSSフィード作成ツール</h1>
+        <p>任意のWebページURLから記事を抽出し、RSS(XML)を生成します。</p>
+        <p class="note">
+          制限事項: JavaScriptレンダリング前提のSPAサイト（React/Vueなど）には対応していません。
+        </p>
+      </header>
+
+      <section class="control">
+        <label for="urlInput">対象URL</label>
+        <div class="control-row">
+          <input
+            id="urlInput"
+            type="url"
+            placeholder="https://example.com/"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="generateButton">フィードを生成</button>
+        </div>
+        <p id="statusMessage" class="status info">URLを入力して実行してください。</p>
+      </section>
+
+      <section id="resultSection" class="result hidden">
+        <div class="result-header">
+          <div>
+            <h2 id="feedTitle">-</h2>
+            <p id="feedDescription">-</p>
+          </div>
+          <div class="badges">
+            <span id="countBadge" class="badge">0件</span>
+            <span id="methodBadge" class="badge secondary">-</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="copyXmlButton" class="secondary">XMLをコピー</button>
+          <button id="saveXmlButton">RSSファイルを保存</button>
+        </div>
+
+        <section class="publish-panel">
+          <h3>Power Automate 監視用に公開</h3>
+          <p id="githubConfigText" class="publish-meta">
+            GitHubリポジトリ情報を確認中です...
+          </p>
+          <p class="publish-note">
+            GitHub TokenはOS資格情報ストア（Credential Manager）に保存されます。
+          </p>
+          <div class="control-row">
+            <input
+              id="githubTokenInput"
+              type="password"
+              placeholder="GitHub Personal Access Token"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="saveTokenButton" class="secondary">GitHub Token登録</button>
+          </div>
+          <div class="actions">
+            <button id="publishButton" disabled>GitHub Pagesへ公開</button>
+            <button id="copyPublishedUrlButton" class="secondary" disabled>
+              公開URLをコピー
+            </button>
+          </div>
+          <p id="publishedUrlText" class="publish-meta">公開URL: -</p>
+          <p id="publishResultText" class="publish-meta">コミット情報: -</p>
+        </section>
+
+        <ul id="articlesList" class="articles"></ul>
+      </section>
+    </main>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

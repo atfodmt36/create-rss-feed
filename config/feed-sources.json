@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "name": "KTS",
+      "url": "https://www.kts.co.jp/",
+      "enabled": true
+    }
+  ]
+}

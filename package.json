@@ -1,0 +1,44 @@
+{
+  "name": "create-rss-feed",
+  "version": "1.0.0",
+  "description": "任意のWebサイトから記事を抽出してRSSフィードを生成するElectronアプリ",
+  "author": "beman",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "tsc && electron dist/main.js",
+    "build": "tsc",
+    "update:feeds": "tsc && node dist/cli/update-feeds.js",
+    "dist:win": "set ELECTRON_BUILDER_CACHE=.cache\\electron-builder&& tsc && electron-builder --win"
+  },
+  "dependencies": {
+    "@extractus/feed-extractor": "*",
+    "@octokit/rest": "^21.1.1",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "feed": "^4.2.2",
+    "keytar": "^7.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "electron": "^31.0.2",
+    "electron-builder": "^25.1.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "build": {
+    "appId": "com.example.create-rss-feed",
+    "productName": "Create RSS Feed",
+    "npmRebuild": false,
+    "files": [
+      "dist/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}
