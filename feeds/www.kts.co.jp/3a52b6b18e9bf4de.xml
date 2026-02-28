@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>川田テクノシステム株式会社（KTS）</title>
+        <link>https://www.kts.co.jp/news</link>
+        <description>川田テクノシステム株式会社（KTS）の、各種ニュースを発信するページです。</description>
+        <lastBuildDate>Sat, 28 Feb 2026 14:13:27 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>create-rss-feed</generator>
+        <language>ja</language>
+        <copyright>2026 www.kts.co.jp</copyright>
+        <item>
+            <title><![CDATA[ニュース]]></title>
+            <link>https://www.kts.co.jp/news</link>
+            <guid>https://www.kts.co.jp/news</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[お知らせ]]></title>
+            <link>https://www.kts.co.jp/news/important</link>
+            <guid>https://www.kts.co.jp/news/important</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[プレスリリース]]></title>
+            <link>https://www.kts.co.jp/news/press</link>
+            <guid>https://www.kts.co.jp/news/press</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス]]></title>
+            <link>https://www.kts.co.jp/news/service</link>
+            <guid>https://www.kts.co.jp/news/service</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[お役立ち情報]]></title>
+            <link>https://www.kts.co.jp/news/useful</link>
+            <guid>https://www.kts.co.jp/news/useful</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#NEWリリース]]></title>
+            <link>https://www.kts.co.jp/news/release</link>
+            <guid>https://www.kts.co.jp/news/release</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/verup</link>
+            <guid>https://www.kts.co.jp/news/verup</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#KTSClips/Youtube]]></title>
+            <link>https://www.kts.co.jp/news/movie</link>
+            <guid>https://www.kts.co.jp/news/movie</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#メンテナンス]]></title>
+            <link>https://www.kts.co.jp/news/maintenance</link>
+            <guid>https://www.kts.co.jp/news/maintenance</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#特許取得・認証]]></title>
+            <link>https://www.kts.co.jp/news/patent</link>
+            <guid>https://www.kts.co.jp/news/patent</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#業務提携・協賛]]></title>
+            <link>https://www.kts.co.jp/news/partnership</link>
+            <guid>https://www.kts.co.jp/news/partnership</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#SDGs]]></title>
+            <link>https://www.kts.co.jp/news/sdgs</link>
+            <guid>https://www.kts.co.jp/news/sdgs</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#イベント]]></title>
+            <link>https://www.kts.co.jp/news/event</link>
+            <guid>https://www.kts.co.jp/news/event</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[#メディア]]></title>
+            <link>https://www.kts.co.jp/news/media</link>
+            <guid>https://www.kts.co.jp/news/media</guid>
+            <pubDate>Sat, 28 Feb 2026 14:13:27 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.02.26 修正プログラム |V-nasClair（Ver.2024.2／... #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/patch_V-nasclair_20242_20252</link>
+            <guid>https://www.kts.co.jp/news/patch_V-nasclair_20242_20252</guid>
+            <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[修正プログラム |V-nasClair（Ver.2024.2／...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[お知らせ 2026.02.25 関西営業所ビル名称変更のお知らせ]]></title>
+            <link>https://www.kts.co.jp/news/kansai-building-rename_260225</link>
+            <guid>https://www.kts.co.jp/news/kansai-building-rename_260225</guid>
+            <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[関西営業所ビル名称変更のお知らせ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.02.24 basepage 最新アップデート情報 #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/update_basepage</link>
+            <guid>https://www.kts.co.jp/news/update_basepage</guid>
+            <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[basepage 最新アップデート情報]]></description>
+        </item>
+        <item>
+            <title><![CDATA[プレスリリース 2026.02.24 開発中AIを先行体験できる「KTS OPEN SERVICE」... #NEWリリース]]></title>
+            <link>https://www.kts.co.jp/news/pr260224</link>
+            <guid>https://www.kts.co.jp/news/pr260224</guid>
+            <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[開発中AIを先行体験できる「KTS OPEN SERVICE」...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[お知らせ 2026.02.18 第2回「公共インフラの問題を、建設DXでなんとかする自治体会議... #イベント]]></title>
+            <link>https://www.kts.co.jp/news/meeting_260116</link>
+            <guid>https://www.kts.co.jp/news/meeting_260116</guid>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[第2回「公共インフラの問題を、建設DXでなんとかする自治体会議...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.02.12 修正プログラム |V-nasClair（Ver.2026.1） #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/patch_V-nasclair_20261</link>
+            <guid>https://www.kts.co.jp/news/patch_V-nasclair_20261</guid>
+            <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[修正プログラム |V-nasClair（Ver.2026.1）]]></description>
+        </item>
+        <item>
+            <title><![CDATA[お知らせ 2026.02.09 KTSアルカナがテレ東『MONOISM（モノイズム）』で紹介さ... #メディア]]></title>
+            <link>https://www.kts.co.jp/news/media260214</link>
+            <guid>https://www.kts.co.jp/news/media260214</guid>
+            <pubDate>Mon, 09 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[KTSアルカナがテレ東『MONOISM（モノイズム）』で紹介さ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[プレスリリース 2026.02.08 ホラン千秋さん出演のAIテレビCMを放映開始 #メディア]]></title>
+            <link>https://www.kts.co.jp/news/pr260208</link>
+            <guid>https://www.kts.co.jp/news/pr260208</guid>
+            <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[ホラン千秋さん出演のAIテレビCMを放映開始]]></description>
+        </item>
+        <item>
+            <title><![CDATA[プレスリリース 2026.02.07 大量文書の墨消し工数を大幅に削減。墨消しAI「KTSアルカナ」... #NEWリリース]]></title>
+            <link>https://www.kts.co.jp/news/pr260207</link>
+            <guid>https://www.kts.co.jp/news/pr260207</guid>
+            <pubDate>Sat, 07 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[大量文書の墨消し工数を大幅に削減。墨消しAI「KTSアルカナ」...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[お知らせ 2026.02.06 東北地方整備局より、2年連続で「ICTサポーター感謝状」を頂き... #SDGs]]></title>
+            <link>https://www.kts.co.jp/news/sdgs_ict-supporter2026</link>
+            <guid>https://www.kts.co.jp/news/sdgs_ict-supporter2026</guid>
+            <pubDate>Fri, 06 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[東北地方整備局より、2年連続で「ICTサポーター感謝状」を頂き...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.01.30 修正プログラム | 電納ヘルパー（設計版 Ver.9.92／工... #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/correct_denno_9921192</link>
+            <guid>https://www.kts.co.jp/news/correct_denno_9921192</guid>
+            <pubDate>Fri, 30 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[修正プログラム | 電納ヘルパー（設計版 Ver.9.92／工...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.01.29 V-nas/V-nasClair・Kitシリーズ Ver.20... #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/verup_vnasclair_20261</link>
+            <guid>https://www.kts.co.jp/news/verup_vnasclair_20261</guid>
+            <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[V-nas/V-nasClair・Kitシリーズ Ver.20...]]></description>
+        </item>
+    </channel>
+</rss>
