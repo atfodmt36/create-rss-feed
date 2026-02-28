@@ -169,7 +169,7 @@ jobs:
           fi
 
           git commit -m "chore(feed): auto update feeds (JST schedule)"
-          git push origin gh-pages
+          git push origin HEAD:gh-pages
 
       - name: Cleanup worktree
         if: always()
