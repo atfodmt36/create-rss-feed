@@ -7,7 +7,9 @@ import {
   publishFeedToGitHubPages,
   PublishFeedResult
 } from "./githubPublisher";
+import { SourceRules } from "./filterRules";
 import { extractFeed, FeedResult } from "./scraper";
+import { getRulesBySourceUrl, saveRulesForSourceUrl } from "./sourceConfig";
 
 type GenerateFeedIpcResponse =
   | { success: true; data: FeedResult }
@@ -38,6 +40,17 @@ type PublishFeedIpcPayload = {
   rssXml: string;
   feedTitle: string;
 };
+
+type SaveSourceRulesIpcPayload = {
+  sourceUrl: string;
+  rules: SourceRules | null;
+};
+
+type SaveSourceRulesIpcResponse = { success: true } | { success: false; error: string };
+
+type GetSourceRulesIpcResponse =
+  | { success: true; rules: SourceRules | null }
+  | { success: false; error: string };
 
 function isValidHttpUrl(value: string): boolean {
   try {
@@ -81,7 +94,8 @@ ipcMain.handle("generate-feed", async (_event, url: string): Promise<GenerateFee
   }
 
   try {
-    const feedResult = await extractFeed(normalizedUrl);
+    const rules = await getRulesBySourceUrl(normalizedUrl);
+    const feedResult = await extractFeed(normalizedUrl, { rules });
     if (feedResult.articles.length === 0) {
       return { success: false, error: "記事を抽出できませんでした。" };
     }
@@ -139,6 +153,46 @@ ipcMain.handle(
           error,
           "トークンの保存に失敗しました。OS資格情報ストアが利用可能か確認してください。"
         )
+      };
+    }
+  }
+);
+
+ipcMain.handle(
+  "save-source-rules",
+  async (_event, payload: SaveSourceRulesIpcPayload): Promise<SaveSourceRulesIpcResponse> => {
+    const sourceUrl = (payload?.sourceUrl ?? "").trim();
+    if (!sourceUrl || !isValidHttpUrl(sourceUrl)) {
+      return { success: false, error: "ルール保存対象URLが不正です。" };
+    }
+
+    try {
+      await saveRulesForSourceUrl(sourceUrl, payload?.rules ?? null);
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        error: toErrorMessage(error, "抽出ルールの保存に失敗しました。")
+      };
+    }
+  }
+);
+
+ipcMain.handle(
+  "get-source-rules",
+  async (_event, sourceUrl: string): Promise<GetSourceRulesIpcResponse> => {
+    const normalizedUrl = (sourceUrl ?? "").trim();
+    if (!normalizedUrl || !isValidHttpUrl(normalizedUrl)) {
+      return { success: false, error: "ルール取得対象URLが不正です。" };
+    }
+
+    try {
+      const rules = await getRulesBySourceUrl(normalizedUrl);
+      return { success: true, rules };
+    } catch (error) {
+      return {
+        success: false,
+        error: toErrorMessage(error, "抽出ルールの取得に失敗しました。")
       };
     }
   }

@@ -1,5 +1,6 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
+import { compactSourceRules, normalizeSourceRules, SourceRules } from "../filterRules";
 import { buildFeedPath } from "../githubPublisher";
 import { extractFeed } from "../scraper";
 
@@ -7,6 +8,7 @@ interface SourceConfig {
   name: string;
   url: string;
   enabled?: boolean;
+  rules?: SourceRules;
 }
 
 interface FeedSourcesConfig {
@@ -71,7 +73,12 @@ async function readSourcesConfig(): Promise<FeedSourcesConfig> {
     if (typeof item !== "object" || item === null) {
       throw new Error(`sources[${index}] の形式が不正です。`);
     }
-    const row = item as { name?: unknown; url?: unknown; enabled?: unknown };
+    const row = item as {
+      name?: unknown;
+      url?: unknown;
+      enabled?: unknown;
+      rules?: unknown;
+    };
     const name = normalizeText(typeof row.name === "string" ? row.name : "");
     const url = normalizeText(typeof row.url === "string" ? row.url : "");
     const enabled = typeof row.enabled === "boolean" ? row.enabled : undefined;
@@ -83,7 +90,16 @@ async function readSourcesConfig(): Promise<FeedSourcesConfig> {
       throw new Error(`sources[${index}].url は http/https のURLを指定してください。`);
     }
 
-    return { name, url, enabled };
+    let rules: SourceRules | undefined;
+    if (row.rules !== undefined && row.rules !== null) {
+      if (typeof row.rules !== "object") {
+        throw new Error(`sources[${index}].rules の形式が不正です。`);
+      }
+      const normalizedRules = normalizeSourceRules(row.rules as SourceRules);
+      rules = compactSourceRules(normalizedRules) ?? undefined;
+    }
+
+    return { name, url, enabled, rules };
   });
 
   return {
@@ -125,7 +141,7 @@ async function run(): Promise<void> {
     process.stdout.write(`[update-feeds] extracting: ${source.name} (${source.url})\n`);
 
     try {
-      const result = await extractFeed(source.url);
+      const result = await extractFeed(source.url, { rules: source.rules });
       if (!result.rssXml || !result.rssXml.trim()) {
         throw new Error("抽出結果のRSS XMLが空でした。");
       }

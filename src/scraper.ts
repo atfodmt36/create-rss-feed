@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import { Feed } from "feed";
+import { applySourceRules, SourceRules } from "./filterRules";
 
 const feedExtractorLib = require("@extractus/feed-extractor") as {
   extract?: (url: string) => Promise<unknown>;
@@ -25,6 +26,15 @@ export interface FeedResult {
   articles: FeedArticle[];
   rssXml: string;
   method: "rss-auto-detect" | "heuristic";
+  originalArticleCount: number;
+  filteredOutCount: number;
+  skippedTopCount: number;
+  ruleFilteredCount: number;
+  appliedRules?: SourceRules;
+}
+
+export interface ExtractFeedOptions {
+  rules?: SourceRules | null;
 }
 
 interface NormalizedFeed {
@@ -467,7 +477,10 @@ function generateRssXml(
   return feed.rss2();
 }
 
-export async function extractFeed(url: string): Promise<FeedResult> {
+export async function extractFeed(
+  url: string,
+  options?: ExtractFeedOptions
+): Promise<FeedResult> {
   if (!isHttpUrl(url)) {
     throw new Error("URL形式が不正です。http:// または https:// を指定してください。");
   }
@@ -477,26 +490,43 @@ export async function extractFeed(url: string): Promise<FeedResult> {
   }
 
   const html = await fetchHtml(url);
+  let feedTitle: string;
+  let feedDescription: string;
+  let method: "rss-auto-detect" | "heuristic";
+  let originalArticles: FeedArticle[];
 
   const autoDetected = await tryAutoDetectFeeds(url, html);
   if (autoDetected) {
-    return {
-      sourceUrl: url,
-      feedTitle: autoDetected.title,
-      feedDescription: autoDetected.description,
-      articles: autoDetected.articles,
-      rssXml: generateRssXml(url, autoDetected.title, autoDetected.description, autoDetected.articles),
-      method: "rss-auto-detect"
-    };
+    feedTitle = autoDetected.title;
+    feedDescription = autoDetected.description;
+    originalArticles = autoDetected.articles;
+    method = "rss-auto-detect";
+  } else {
+    const heuristic = extractHeuristically(url, html);
+    feedTitle = heuristic.title;
+    feedDescription = heuristic.description;
+    originalArticles = heuristic.articles;
+    method = "heuristic";
   }
 
-  const heuristic = extractHeuristically(url, html);
+  const ruleResult = applySourceRules(originalArticles, options?.rules);
+  const filteredArticles = uniqueArticles(ruleResult.articles);
+
+  if (filteredArticles.length === 0) {
+    throw new Error("ルール適用後に記事が0件になりました。条件を見直してください。");
+  }
+
   return {
     sourceUrl: url,
-    feedTitle: heuristic.title,
-    feedDescription: heuristic.description,
-    articles: heuristic.articles,
-    rssXml: generateRssXml(url, heuristic.title, heuristic.description, heuristic.articles),
-    method: "heuristic"
+    feedTitle,
+    feedDescription,
+    articles: filteredArticles,
+    rssXml: generateRssXml(url, feedTitle, feedDescription, filteredArticles),
+    method,
+    originalArticleCount: originalArticles.length,
+    filteredOutCount: ruleResult.filteredOutCount,
+    skippedTopCount: ruleResult.skippedTopCount,
+    ruleFilteredCount: ruleResult.ruleFilteredCount,
+    appliedRules: ruleResult.appliedRules
   };
 }

@@ -48,6 +48,53 @@
           <button id="saveXmlButton">RSSファイルを保存</button>
         </div>
 
+        <section class="rules-panel">
+          <h3>抽出ルール（このURL専用）</h3>
+          <p class="publish-note">
+            生成後の一覧から不要項目を除外する条件です。複数条件はすべて満たす場合のみ採用されます。
+          </p>
+
+          <div class="rule-grid">
+            <label class="rule-field">
+              タイトルに含む（改行区切り）
+              <textarea id="titleIncludesInput" rows="3"></textarea>
+            </label>
+            <label class="rule-field">
+              タイトルに含まない（改行区切り）
+              <textarea id="titleExcludesInput" rows="3"></textarea>
+            </label>
+            <label class="rule-field">
+              URLに含む（改行区切り）
+              <textarea id="urlIncludesInput" rows="3"></textarea>
+            </label>
+            <label class="rule-field">
+              URLに含まない（改行区切り）
+              <textarea id="urlExcludesInput" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="rule-inline">
+            <label class="rule-check">
+              <input id="descriptionRequiredInput" type="checkbox" />
+              description がある記事のみ採用
+            </label>
+            <label class="rule-check">
+              <input id="publishedAtRequiredInput" type="checkbox" />
+              公開日時がある記事のみ採用
+            </label>
+            <label class="rule-number">
+              上位N件を除外
+              <input id="skipTopCountInput" type="number" min="0" step="1" value="0" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="saveRulesButton" class="secondary" disabled>ルールを保存</button>
+            <button id="regenerateWithRulesButton" disabled>このルールで再生成</button>
+          </div>
+          <p id="rulesStatusText" class="publish-meta">ルール状態: -</p>
+        </section>
+
         <section class="publish-panel">
           <h3>Power Automate 監視用に公開</h3>
           <p id="githubConfigText" class="publish-meta">

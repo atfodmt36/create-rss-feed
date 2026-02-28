@@ -78,6 +78,20 @@ input[type="password"] {
   font-size: 1rem;
 }
 
+textarea,
+input[type="number"] {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
 button {
   border: 1px solid var(--accent);
   border-radius: 10px;
@@ -196,6 +210,62 @@ button.secondary {
   word-break: break-word;
 }
 
+.rules-panel {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #d7e3f0;
+  border-radius: 10px;
+  background: #f9fcff;
+}
+
+.rules-panel h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.rule-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rule-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #405263;
+}
+
+.rule-inline {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.rule-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #405263;
+}
+
+.rule-number {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #405263;
+}
+
+.rule-number input[type="number"] {
+  width: 90px;
+}
+
 .articles {
   list-style: none;
   margin: 16px 0 0;
@@ -255,5 +325,9 @@ button.secondary {
 
   .actions {
     flex-direction: column;
+  }
+
+  .rule-grid {
+    grid-template-columns: 1fr;
   }
 }

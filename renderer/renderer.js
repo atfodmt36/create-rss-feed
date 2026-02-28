@@ -16,6 +16,16 @@ const publishButton = document.getElementById("publishButton");
 const copyPublishedUrlButton = document.getElementById("copyPublishedUrlButton");
 const publishedUrlText = document.getElementById("publishedUrlText");
 const publishResultText = document.getElementById("publishResultText");
+const titleIncludesInput = document.getElementById("titleIncludesInput");
+const titleExcludesInput = document.getElementById("titleExcludesInput");
+const urlIncludesInput = document.getElementById("urlIncludesInput");
+const urlExcludesInput = document.getElementById("urlExcludesInput");
+const descriptionRequiredInput = document.getElementById("descriptionRequiredInput");
+const publishedAtRequiredInput = document.getElementById("publishedAtRequiredInput");
+const skipTopCountInput = document.getElementById("skipTopCountInput");
+const saveRulesButton = document.getElementById("saveRulesButton");
+const regenerateWithRulesButton = document.getElementById("regenerateWithRulesButton");
+const rulesStatusText = document.getElementById("rulesStatusText");
 
 let latestResult = null;
 let latestPublishedUrl = "";
@@ -26,6 +36,10 @@ let githubState = {
   branch: "",
   tokenConfigured: false
 };
+
+function getElectronApi() {
+  return window.electronAPI;
+}
 
 function escapeHtml(value) {
   if (typeof value !== "string") {
@@ -42,10 +56,6 @@ function escapeHtml(value) {
 function setStatus(type, message) {
   statusMessage.className = `status ${type}`;
   statusMessage.textContent = message;
-}
-
-function getElectronApi() {
-  return window.electronAPI;
 }
 
 function formatDate(value) {
@@ -92,11 +102,123 @@ function updatePublishButtonState() {
   publishButton.disabled = !canPublish;
 }
 
+function setRulesActionsEnabled(enabled) {
+  saveRulesButton.disabled = !enabled;
+  regenerateWithRulesButton.disabled = !enabled;
+}
+
 function clearPublishedInfo() {
   latestPublishedUrl = "";
   publishedUrlText.textContent = "公開URL: -";
   publishResultText.textContent = "コミット情報: -";
   copyPublishedUrlButton.disabled = true;
+}
+
+function clearRuleForm() {
+  titleIncludesInput.value = "";
+  titleExcludesInput.value = "";
+  urlIncludesInput.value = "";
+  urlExcludesInput.value = "";
+  descriptionRequiredInput.checked = false;
+  publishedAtRequiredInput.checked = false;
+  skipTopCountInput.value = "0";
+}
+
+function normalizeLinesFromText(text) {
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+}
+
+function readRulesFromForm() {
+  const skipRaw = Number(skipTopCountInput.value);
+  const safeSkip = Number.isFinite(skipRaw) ? Math.max(0, Math.floor(skipRaw)) : 0;
+
+  const rules = {};
+  const titleIncludes = normalizeLinesFromText(titleIncludesInput.value);
+  const titleExcludes = normalizeLinesFromText(titleExcludesInput.value);
+  const urlIncludes = normalizeLinesFromText(urlIncludesInput.value);
+  const urlExcludes = normalizeLinesFromText(urlExcludesInput.value);
+
+  if (titleIncludes.length > 0) {
+    rules.titleIncludes = titleIncludes;
+  }
+  if (titleExcludes.length > 0) {
+    rules.titleExcludes = titleExcludes;
+  }
+  if (urlIncludes.length > 0) {
+    rules.urlIncludes = urlIncludes;
+  }
+  if (urlExcludes.length > 0) {
+    rules.urlExcludes = urlExcludes;
+  }
+  if (descriptionRequiredInput.checked) {
+    rules.descriptionRequired = true;
+  }
+  if (publishedAtRequiredInput.checked) {
+    rules.publishedAtRequired = true;
+  }
+  if (safeSkip > 0) {
+    rules.skipTopCount = safeSkip;
+  }
+
+  return rules;
+}
+
+function fillRulesForm(rules) {
+  const source = rules && typeof rules === "object" ? rules : {};
+  titleIncludesInput.value = Array.isArray(source.titleIncludes)
+    ? source.titleIncludes.join("\n")
+    : "";
+  titleExcludesInput.value = Array.isArray(source.titleExcludes)
+    ? source.titleExcludes.join("\n")
+    : "";
+  urlIncludesInput.value = Array.isArray(source.urlIncludes)
+    ? source.urlIncludes.join("\n")
+    : "";
+  urlExcludesInput.value = Array.isArray(source.urlExcludes)
+    ? source.urlExcludes.join("\n")
+    : "";
+  descriptionRequiredInput.checked = source.descriptionRequired === true;
+  publishedAtRequiredInput.checked = source.publishedAtRequired === true;
+  skipTopCountInput.value =
+    typeof source.skipTopCount === "number" && source.skipTopCount > 0
+      ? String(Math.floor(source.skipTopCount))
+      : "0";
+}
+
+function formatRulesSummary(rules) {
+  if (!rules || typeof rules !== "object") {
+    return "未設定";
+  }
+  const parts = [];
+  if (Array.isArray(rules.titleIncludes) && rules.titleIncludes.length > 0) {
+    parts.push(`タイトル含む:${rules.titleIncludes.length}`);
+  }
+  if (Array.isArray(rules.titleExcludes) && rules.titleExcludes.length > 0) {
+    parts.push(`タイトル除外:${rules.titleExcludes.length}`);
+  }
+  if (Array.isArray(rules.urlIncludes) && rules.urlIncludes.length > 0) {
+    parts.push(`URL含む:${rules.urlIncludes.length}`);
+  }
+  if (Array.isArray(rules.urlExcludes) && rules.urlExcludes.length > 0) {
+    parts.push(`URL除外:${rules.urlExcludes.length}`);
+  }
+  if (rules.descriptionRequired === true) {
+    parts.push("description必須");
+  }
+  if (rules.publishedAtRequired === true) {
+    parts.push("日時必須");
+  }
+  if (typeof rules.skipTopCount === "number" && rules.skipTopCount > 0) {
+    parts.push(`先頭除外:${Math.floor(rules.skipTopCount)}件`);
+  }
+  return parts.length > 0 ? parts.join(" / ") : "未設定";
+}
+
+function setRulesStatus(message) {
+  rulesStatusText.textContent = `ルール状態: ${message}`;
 }
 
 function renderGithubConfig() {
@@ -168,17 +290,113 @@ function renderArticles(articles) {
   articlesList.innerHTML = items;
 }
 
+function updateRulesSummaryFromResult(result) {
+  if (!result) {
+    setRulesStatus("未設定");
+    return;
+  }
+  const filteredOutCount = Number.isFinite(result.filteredOutCount)
+    ? result.filteredOutCount
+    : 0;
+  const skippedTopCount = Number.isFinite(result.skippedTopCount) ? result.skippedTopCount : 0;
+  const ruleFilteredCount = Number.isFinite(result.ruleFilteredCount)
+    ? result.ruleFilteredCount
+    : 0;
+
+  const stats =
+    filteredOutCount > 0
+      ? `除外 ${filteredOutCount}件（先頭 ${skippedTopCount}件 / 条件 ${ruleFilteredCount}件）`
+      : "除外 0件";
+  const summary = formatRulesSummary(result.appliedRules);
+  setRulesStatus(`${stats} | ${summary}`);
+}
+
 function renderResult(result) {
   feedTitle.textContent = result.feedTitle || "タイトルなし";
   feedDescription.textContent = result.feedDescription || "説明なし";
-  countBadge.textContent = `${result.articles.length}件`;
+  const originalCount = Number.isFinite(result.originalArticleCount)
+    ? result.originalArticleCount
+    : result.articles.length;
+  countBadge.textContent =
+    originalCount === result.articles.length
+      ? `${result.articles.length}件`
+      : `${result.articles.length}/${originalCount}件`;
   methodBadge.textContent = getMethodLabel(result.method);
   renderArticles(result.articles);
   resultSection.classList.remove("hidden");
+  updateRulesSummaryFromResult(result);
 }
 
-async function onGenerateClick() {
-  const targetUrl = urlInput.value.trim();
+async function loadRulesForSource(sourceUrl) {
+  const api = getElectronApi();
+  if (!api || typeof api.getSourceRules !== "function") {
+    clearRuleForm();
+    setRulesStatus("この環境ではルール機能を利用できません");
+    return;
+  }
+
+  try {
+    const response = await api.getSourceRules(sourceUrl);
+    if (!response || response.success !== true) {
+      clearRuleForm();
+      setRulesStatus("ルール取得に失敗しました");
+      return;
+    }
+    fillRulesForm(response.rules);
+    if (response.rules) {
+      setRulesStatus(`保存済み: ${formatRulesSummary(response.rules)}`);
+    } else {
+      setRulesStatus("未設定");
+    }
+  } catch {
+    clearRuleForm();
+    setRulesStatus("ルール取得に失敗しました");
+  }
+}
+
+async function saveRulesForCurrentSource(quiet) {
+  if (!latestResult || !latestResult.sourceUrl) {
+    setStatus("error", "先にフィードを生成してください。");
+    return false;
+  }
+
+  const api = getElectronApi();
+  if (!api || typeof api.saveSourceRules !== "function") {
+    setStatus("error", "ルール保存APIが利用できません。");
+    return false;
+  }
+
+  const rules = readRulesFromForm();
+  saveRulesButton.disabled = true;
+  if (!quiet) {
+    setStatus("loading", "抽出ルールを保存しています...");
+  }
+
+  try {
+    const response = await api.saveSourceRules({
+      sourceUrl: latestResult.sourceUrl,
+      rules
+    });
+    if (!response || response.success !== true) {
+      const errorMessage = response && response.error ? response.error : "ルール保存に失敗しました。";
+      setStatus("error", errorMessage);
+      return false;
+    }
+    await loadRulesForSource(latestResult.sourceUrl);
+    if (!quiet) {
+      setStatus("success", "抽出ルールを保存しました。");
+    }
+    return true;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "ルール保存中にエラーが発生しました。";
+    setStatus("error", errorMessage);
+    return false;
+  } finally {
+    saveRulesButton.disabled = false;
+  }
+}
+
+async function generateFeedWithUrl(targetUrl) {
   const validationError = validateUrl(targetUrl);
   if (validationError) {
     setStatus("error", validationError);
@@ -192,6 +410,7 @@ async function onGenerateClick() {
   }
 
   generateButton.disabled = true;
+  regenerateWithRulesButton.disabled = true;
   setStatus("loading", "フィードを生成しています...");
 
   try {
@@ -203,10 +422,17 @@ async function onGenerateClick() {
       updatePublishButtonState();
       return;
     }
+
     latestResult = response.data;
     clearPublishedInfo();
     renderResult(latestResult);
-    setStatus("success", `${latestResult.articles.length}件の記事を抽出しました。`);
+    setRulesActionsEnabled(true);
+    await loadRulesForSource(latestResult.sourceUrl);
+    updateRulesSummaryFromResult(latestResult);
+    setStatus(
+      "success",
+      `${latestResult.articles.length}件の記事を抽出しました。`
+    );
     updatePublishButtonState();
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "不明なエラーが発生しました。";
@@ -215,7 +441,13 @@ async function onGenerateClick() {
     updatePublishButtonState();
   } finally {
     generateButton.disabled = false;
+    regenerateWithRulesButton.disabled = false;
   }
+}
+
+async function onGenerateClick() {
+  const targetUrl = urlInput.value.trim();
+  await generateFeedWithUrl(targetUrl);
 }
 
 async function onCopyXmlClick() {
@@ -261,6 +493,23 @@ async function onSaveXmlClick() {
     const errorMessage = error instanceof Error ? error.message : "保存中にエラーが発生しました。";
     setStatus("error", errorMessage);
   }
+}
+
+async function onSaveRulesClick() {
+  await saveRulesForCurrentSource(false);
+}
+
+async function onRegenerateWithRulesClick() {
+  if (!latestResult || !latestResult.sourceUrl) {
+    setStatus("error", "先にフィードを生成してください。");
+    return;
+  }
+  const saved = await saveRulesForCurrentSource(true);
+  if (!saved) {
+    return;
+  }
+  urlInput.value = latestResult.sourceUrl;
+  await generateFeedWithUrl(latestResult.sourceUrl);
 }
 
 async function onSaveTokenClick() {
@@ -377,8 +626,13 @@ urlInput.addEventListener("keydown", (event) => {
 });
 copyXmlButton.addEventListener("click", onCopyXmlClick);
 saveXmlButton.addEventListener("click", onSaveXmlClick);
+saveRulesButton.addEventListener("click", onSaveRulesClick);
+regenerateWithRulesButton.addEventListener("click", onRegenerateWithRulesClick);
 saveTokenButton.addEventListener("click", onSaveTokenClick);
 publishButton.addEventListener("click", onPublishClick);
 copyPublishedUrlButton.addEventListener("click", onCopyPublishedUrlClick);
 
+setRulesActionsEnabled(false);
+clearRuleForm();
+setRulesStatus("未設定");
 refreshGithubConfig();

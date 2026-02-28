@@ -13,9 +13,10 @@ npm start
 ## 使い方
 
 1. URLを入力して「フィードを生成」を実行
-2. 必要なら「XMLをコピー」「RSSファイルを保存」
-3. Power Automate連携する場合は「GitHub Token登録」
-4. 「GitHub Pagesへ公開」で固定URLを発行
+2. 生成後に「抽出ルール（このURL専用）」を必要に応じて設定
+3. 必要なら「XMLをコピー」「RSSファイルを保存」
+4. Power Automate連携する場合は「GitHub Token登録」
+5. 「GitHub Pagesへ公開」で固定URLを発行
 
 公開URLは次の形式で生成されます。
 
@@ -24,6 +25,19 @@ https://{owner}.github.io/{repo}/feeds/{hostname}/{hash16}.xml
 ```
 
 同じ元URLは同じファイルパスに上書きされるため、Power Automate側は同一URLを継続監視できます。
+
+## 抽出ルール（URL単位）
+
+生成後に表示されるルールUIで、ページごとに以下を設定できます。
+
+- タイトル/URL の 含む・含まない（改行区切り）
+- `description` 必須
+- `publishedAt` 必須
+- `上位N件除外 (skipTopCount)`  
+  例: ページ先頭に固定の非ニュース項目が3件ある場合は `3` を指定
+
+ルールは `config/feed-sources.json` に保存され、手動生成と自動更新の両方に適用されます。  
+ルール適用後に0件になった場合は、誤設定検知のためエラーで公開を中止します。
 
 ## 自動更新（GitHub Actions）
 
@@ -44,8 +58,18 @@ https://{owner}.github.io/{repo}/feeds/{hostname}/{hash16}.xml
   "sources": [
     {
       "name": "KTS",
-      "url": "https://www.kts.co.jp/",
-      "enabled": true
+      "url": "https://www.kts.co.jp/news",
+      "enabled": true,
+      "rules": {
+        "skipTopCount": 2,
+        "urlIncludes": [
+          "/news/"
+        ],
+        "urlExcludes": [
+          "/category/"
+        ],
+        "descriptionRequired": true
+      }
     }
   ]
 }
