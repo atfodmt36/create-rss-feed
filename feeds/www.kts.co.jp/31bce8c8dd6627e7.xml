@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>川田テクノシステム株式会社（KTS）</title>
+        <link>https://www.kts.co.jp/</link>
+        <description>情報サービスコンサルタント『川田テクノシステム株式会社（KTS）』の公式ホームページです。KTSの取り組みのご紹介、製品情報のご紹介、各種お申込みのご案内を掲載しています。</description>
+        <lastBuildDate>Sat, 28 Feb 2026 14:43:15 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>create-rss-feed</generator>
+        <language>ja</language>
+        <copyright>2026 www.kts.co.jp</copyright>
+        <item>
+            <title><![CDATA[ニュース]]></title>
+            <link>https://www.kts.co.jp/news</link>
+            <guid>https://www.kts.co.jp/news</guid>
+            <pubDate>Sat, 28 Feb 2026 14:43:15 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2025.10.10 【重要】弊社を装った不審なメールにご注意ください]]></title>
+            <link>https://www.kts.co.jp/news/251010alert_spammail</link>
+            <guid>https://www.kts.co.jp/news/251010alert_spammail</guid>
+            <pubDate>Fri, 10 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[【重要】弊社を装った不審なメールにご注意ください]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2025.06.20 代表取締役及び役員の異動に関するお知らせ]]></title>
+            <link>https://www.kts.co.jp/news/pr250620</link>
+            <guid>https://www.kts.co.jp/news/pr250620</guid>
+            <pubDate>Fri, 20 Jun 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[代表取締役及び役員の異動に関するお知らせ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2024.01.05 令和6年1月 能登半島地震で被災された皆様へ]]></title>
+            <link>https://www.kts.co.jp/news/disaster/20240104</link>
+            <guid>https://www.kts.co.jp/news/disaster/20240104</guid>
+            <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[令和6年1月 能登半島地震で被災された皆様へ]]></description>
+        </item>
+    </channel>
+</rss>
