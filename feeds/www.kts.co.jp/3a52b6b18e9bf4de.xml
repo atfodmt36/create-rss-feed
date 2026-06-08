@@ -4,7 +4,7 @@
         <title>川田テクノシステム株式会社（KTS）</title>
         <link>https://www.kts.co.jp/news</link>
         <description>川田テクノシステム株式会社（KTS）の、各種ニュースを発信するページです。</description>
-        <lastBuildDate>Mon, 08 Jun 2026 00:10:15 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Jun 2026 08:11:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>create-rss-feed</generator>
         <language>ja</language>
@@ -13,91 +13,98 @@
             <title><![CDATA[ニュース]]></title>
             <link>https://www.kts.co.jp/news</link>
             <guid>https://www.kts.co.jp/news</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[お知らせ]]></title>
             <link>https://www.kts.co.jp/news/important</link>
             <guid>https://www.kts.co.jp/news/important</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[ユーザ事例・紹介記事]]></title>
             <link>https://www.kts.co.jp/news/cases</link>
             <guid>https://www.kts.co.jp/news/cases</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[プレスリリース]]></title>
             <link>https://www.kts.co.jp/news/press</link>
             <guid>https://www.kts.co.jp/news/press</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[製品・サービス]]></title>
             <link>https://www.kts.co.jp/news/service</link>
             <guid>https://www.kts.co.jp/news/service</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[お役立ち情報]]></title>
             <link>https://www.kts.co.jp/news/useful</link>
             <guid>https://www.kts.co.jp/news/useful</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#NEWリリース]]></title>
             <link>https://www.kts.co.jp/news/release</link>
             <guid>https://www.kts.co.jp/news/release</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#バージョンアップ]]></title>
             <link>https://www.kts.co.jp/news/verup</link>
             <guid>https://www.kts.co.jp/news/verup</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#KTSClips/Youtube]]></title>
             <link>https://www.kts.co.jp/news/movie</link>
             <guid>https://www.kts.co.jp/news/movie</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#メンテナンス]]></title>
             <link>https://www.kts.co.jp/news/maintenance</link>
             <guid>https://www.kts.co.jp/news/maintenance</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#特許取得・認証]]></title>
             <link>https://www.kts.co.jp/news/patent</link>
             <guid>https://www.kts.co.jp/news/patent</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#業務提携・協賛]]></title>
             <link>https://www.kts.co.jp/news/partnership</link>
             <guid>https://www.kts.co.jp/news/partnership</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#SDGs]]></title>
             <link>https://www.kts.co.jp/news/sdgs</link>
             <guid>https://www.kts.co.jp/news/sdgs</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#イベント]]></title>
             <link>https://www.kts.co.jp/news/event</link>
             <guid>https://www.kts.co.jp/news/event</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#メディア]]></title>
             <link>https://www.kts.co.jp/news/media</link>
             <guid>https://www.kts.co.jp/news/media</guid>
-            <pubDate>Mon, 08 Jun 2026 00:10:15 GMT</pubDate>
+            <pubDate>Mon, 08 Jun 2026 08:11:17 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.06.08 basepage最新アップデート情報 #バージョンアップ]]></title>
+            <link>https://www.kts.co.jp/news/update_basepage</link>
+            <guid>https://www.kts.co.jp/news/update_basepage</guid>
+            <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[basepage最新アップデート情報]]></description>
         </item>
         <item>
             <title><![CDATA[お知らせ 2026.06.02 台風接近に伴う臨時休業のお知らせ]]></title>
@@ -175,13 +182,6 @@
             <guid>https://www.kts.co.jp/news/media_radio_start</guid>
             <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[ハナコさんとお届けするKTS提供のラジオ番組、初回収録を行いま...]]></description>
-        </item>
-        <item>
-            <title><![CDATA[お知らせ 2026.04.08 ゴールデンウィーク休業に関するお知らせ]]></title>
-            <link>https://www.kts.co.jp/news/2026gw</link>
-            <guid>https://www.kts.co.jp/news/2026gw</guid>
-            <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[ゴールデンウィーク休業に関するお知らせ]]></description>
         </item>
     </channel>
 </rss>
