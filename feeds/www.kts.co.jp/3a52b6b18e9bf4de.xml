@@ -4,7 +4,7 @@
         <title>川田テクノシステム株式会社（KTS）</title>
         <link>https://www.kts.co.jp/news</link>
         <description>川田テクノシステム株式会社（KTS）の、各種ニュースを発信するページです。</description>
-        <lastBuildDate>Fri, 17 Jul 2026 00:00:26 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Jul 2026 05:43:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>create-rss-feed</generator>
         <language>ja</language>
@@ -13,91 +13,119 @@
             <title><![CDATA[ニュース]]></title>
             <link>https://www.kts.co.jp/news</link>
             <guid>https://www.kts.co.jp/news</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[お知らせ]]></title>
             <link>https://www.kts.co.jp/news/important</link>
             <guid>https://www.kts.co.jp/news/important</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[ユーザ事例・紹介記事]]></title>
             <link>https://www.kts.co.jp/news/cases</link>
             <guid>https://www.kts.co.jp/news/cases</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[プレスリリース]]></title>
             <link>https://www.kts.co.jp/news/press</link>
             <guid>https://www.kts.co.jp/news/press</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[製品・サービス]]></title>
             <link>https://www.kts.co.jp/news/service</link>
             <guid>https://www.kts.co.jp/news/service</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[お役立ち情報]]></title>
             <link>https://www.kts.co.jp/news/useful</link>
             <guid>https://www.kts.co.jp/news/useful</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#NEWリリース]]></title>
             <link>https://www.kts.co.jp/news/release</link>
             <guid>https://www.kts.co.jp/news/release</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#バージョンアップ]]></title>
             <link>https://www.kts.co.jp/news/verup</link>
             <guid>https://www.kts.co.jp/news/verup</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#KTSClips/Youtube]]></title>
             <link>https://www.kts.co.jp/news/movie</link>
             <guid>https://www.kts.co.jp/news/movie</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#メンテナンス]]></title>
             <link>https://www.kts.co.jp/news/maintenance</link>
             <guid>https://www.kts.co.jp/news/maintenance</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#特許取得・認証]]></title>
             <link>https://www.kts.co.jp/news/patent</link>
             <guid>https://www.kts.co.jp/news/patent</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#業務提携・協賛]]></title>
             <link>https://www.kts.co.jp/news/partnership</link>
             <guid>https://www.kts.co.jp/news/partnership</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#SDGs]]></title>
             <link>https://www.kts.co.jp/news/sdgs</link>
             <guid>https://www.kts.co.jp/news/sdgs</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#イベント]]></title>
             <link>https://www.kts.co.jp/news/event</link>
             <guid>https://www.kts.co.jp/news/event</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[#メディア]]></title>
             <link>https://www.kts.co.jp/news/media</link>
             <guid>https://www.kts.co.jp/news/media</guid>
-            <pubDate>Fri, 17 Jul 2026 00:00:26 GMT</pubDate>
+            <pubDate>Fri, 17 Jul 2026 05:43:15 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.07.17 basepage［LGWAN版］メンテナンスのお知らせ #メンテナンス]]></title>
+            <link>https://www.kts.co.jp/news/bplg_systemmaintenance</link>
+            <guid>https://www.kts.co.jp/news/bplg_systemmaintenance</guid>
+            <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[basepage［LGWAN版］メンテナンスのお知らせ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.07.17 ねっとさーばCloud［LGWAN版］メンテナンスのお知らせ #メンテナンス]]></title>
+            <link>https://www.kts.co.jp/news/nsclg_systemmaintenance</link>
+            <guid>https://www.kts.co.jp/news/nsclg_systemmaintenance</guid>
+            <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[ねっとさーばCloud［LGWAN版］メンテナンスのお知らせ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[製品・サービス 2026.07.17 basepage メンテナンスのお知らせ #メンテナンス]]></title>
+            <link>https://www.kts.co.jp/news/bp_systemmaintenance</link>
+            <guid>https://www.kts.co.jp/news/bp_systemmaintenance</guid>
+            <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[basepage メンテナンスのお知らせ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[お役立ち情報 2026.07.17 【BIM/CIM LIVE】アーカイブ動画リンク集]]></title>
+            <link>https://www.kts.co.jp/news/bimcim_live</link>
+            <guid>https://www.kts.co.jp/news/bimcim_live</guid>
+            <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[【BIM/CIM LIVE】アーカイブ動画リンク集]]></description>
         </item>
         <item>
             <title><![CDATA[製品・サービス 2026.07.06 修正プログラム | CADチェッカー #バージョンアップ]]></title>
@@ -128,13 +156,6 @@
             <description><![CDATA[できる動画シリーズの公開]]></description>
         </item>
         <item>
-            <title><![CDATA[製品・サービス 2026.06.15 basepage メンテナンスのお知らせ #メンテナンス]]></title>
-            <link>https://www.kts.co.jp/news/bp_systemmaintenance</link>
-            <guid>https://www.kts.co.jp/news/bp_systemmaintenance</guid>
-            <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[basepage メンテナンスのお知らせ]]></description>
-        </item>
-        <item>
             <title><![CDATA[ユーザ事例・紹介記事 2026.06.11 浚渫土量計算における、V-nasClairの活用 ― 水中施工...]]></title>
             <link>https://www.kts.co.jp/news/cases_clair_portech</link>
             <guid>https://www.kts.co.jp/news/cases_clair_portech</guid>
@@ -161,27 +182,6 @@
             <guid>https://www.kts.co.jp/news/patch-vnas-2440_2420</guid>
             <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
             <description><![CDATA[修正プログラム | V-nas専用CADシリーズ Ver24....]]></description>
-        </item>
-        <item>
-            <title><![CDATA[製品・サービス 2026.05.28 V-nas/V-nasClair・Kitシリーズ Ver.20... #バージョンアップ]]></title>
-            <link>https://www.kts.co.jp/news/verup_vnasclair_20262</link>
-            <guid>https://www.kts.co.jp/news/verup_vnasclair_20262</guid>
-            <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[V-nas/V-nasClair・Kitシリーズ Ver.20...]]></description>
-        </item>
-        <item>
-            <title><![CDATA[ユーザ事例・紹介記事 2026.05.27 堤防・樋管設計で平均57％の省力化を実現 ― 3D設計システム... #メディア]]></title>
-            <link>https://www.kts.co.jp/news/cases_river_rivstr_itguide2026</link>
-            <guid>https://www.kts.co.jp/news/cases_river_rivstr_itguide2026</guid>
-            <pubDate>Wed, 27 May 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[堤防・樋管設計で平均57％の省力化を実現 ― 3D設計システム...]]></description>
-        </item>
-        <item>
-            <title><![CDATA[お知らせ 2026.05.22 GPS不要の空間再現「３Dマップ生成」システム、試供版登場！ #NEWリリース]]></title>
-            <link>https://www.kts.co.jp/news/3dmap</link>
-            <guid>https://www.kts.co.jp/news/3dmap</guid>
-            <pubDate>Fri, 22 May 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[GPS不要の空間再現「３Dマップ生成」システム、試供版登場！]]></description>
         </item>
     </channel>
 </rss>
